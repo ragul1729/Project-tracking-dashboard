@@ -1,0 +1,30 @@
+# === Target Build Directories ===
+target/
+*.egg-info/
+
+# === IntelliJ IDEA Configuration Files ===
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# === Eclipse Configuration Files (If applicable) ===
+.settings/
+.classpath
+.project
+.factorypath
+
+# === OS & System Caches ===
+.DS_Store
+Thumbs.db
+
+# === Application Logs & Runtime Files ===
+*.log
+logs/
+*.tmp
+*.bak
+
+# === Sensitive Environment Configurations ===
+.env
+.env.local
