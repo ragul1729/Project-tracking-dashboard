@@ -23,6 +23,10 @@ public class Student {
 
     private Integer academicYear;
 
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+
     public Student() {
     }
 
@@ -52,5 +56,13 @@ public class Student {
 
     public void setAcademicYear(Integer academicYear) {
         this.academicYear = academicYear;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
