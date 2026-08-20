@@ -81,13 +81,13 @@ public class Marks {
         this.total = total;
     }
 
-    public Boolean getPublished() {
+    public Boolean getIsPublished() {
         return isPublished;
     }
 
-    public void setPublished(
-            Boolean published) {
+    public void setIsPublished(
+            Boolean isPublished) {
 
-        isPublished = published;
+        this.isPublished = isPublished;
     }
 }
