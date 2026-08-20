@@ -2,6 +2,8 @@ package com.PTD.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "teacher")
 public class Teacher {
@@ -22,6 +24,9 @@ public class Teacher {
     private String employeeNo;
 
     private String department;
+
+    @ManyToMany(mappedBy = "panelMembers")
+    private List<ReviewPanel> reviewPanels;
 
     public Teacher() {
     }
@@ -52,5 +57,13 @@ public class Teacher {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    public List<ReviewPanel> getReviewPanels() {
+        return reviewPanels;
+    }
+
+    public void setReviewPanels(List<ReviewPanel> reviewPanels) {
+        this.reviewPanels = reviewPanels;
     }
 }
