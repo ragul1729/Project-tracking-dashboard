@@ -28,6 +28,9 @@ public class Teacher {
     @ManyToMany(mappedBy = "panelMembers")
     private List<ReviewPanel> reviewPanels;
 
+    @OneToMany(mappedBy = "teacher")
+    private List<Meeting> meetings;
+
     public Teacher() {
     }
 
@@ -65,5 +68,14 @@ public class Teacher {
 
     public void setReviewPanels(List<ReviewPanel> reviewPanels) {
         this.reviewPanels = reviewPanels;
+    }
+
+    public List<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(
+            List<Meeting> meetings) {
+        this.meetings = meetings;
     }
 }
