@@ -36,6 +36,9 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<Meeting> meetings;
 
+    @ManyToMany(mappedBy = "projects")
+    private Set<Announcement> announcements;
+
     public Long getProjectId() {
         return projectId;
     }
@@ -112,5 +115,14 @@ public class Project {
     public void setMeetings(
             List<Meeting> meetings) {
         this.meetings = meetings;
+    }
+
+    public Set<Announcement> getAnnouncements() {
+        return announcements;
+    }
+
+    public void setAnnouncements(
+            Set<Announcement> announcements) {
+        this.announcements = announcements;
     }
 }

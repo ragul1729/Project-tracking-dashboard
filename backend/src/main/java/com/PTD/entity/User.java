@@ -11,6 +11,14 @@ public class User {
  private String passwordHash;
  private String name;
 
+ @OneToMany(mappedBy = "createdBy")
+ private Set<Announcement> announcements =
+         new HashSet<>();
+
+ @ElementCollection(fetch=FetchType.EAGER)
+ @Enumerated(EnumType.STRING)
+ private Set<Role> roles=new HashSet<>();
+
  public Long getUserId() {
   return userId;
  }
@@ -51,7 +59,13 @@ public class User {
   this.roles = roles;
  }
 
- @ElementCollection(fetch=FetchType.EAGER)
- @Enumerated(EnumType.STRING)
- private Set<Role> roles=new HashSet<>();
+
+ public Set<Announcement> getAnnouncements() {
+  return announcements;
+ }
+
+ public void setAnnouncements(
+         Set<Announcement> announcements) {
+  this.announcements = announcements;
+ }
 }
