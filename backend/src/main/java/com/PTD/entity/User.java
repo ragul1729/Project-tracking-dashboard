@@ -7,6 +7,7 @@ import java.util.*;
 public class User {
  @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
  private Long userId;
+ @Column(nullable = false, unique = true)
  private String email;
  private String passwordHash;
  private String name;

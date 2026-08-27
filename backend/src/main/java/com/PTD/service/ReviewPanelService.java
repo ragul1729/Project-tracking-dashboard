@@ -8,6 +8,7 @@ import com.PTD.repository.ReviewPanelRepository;
 import com.PTD.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,12 +34,8 @@ public class ReviewPanelService {
 
         panel.setPanelName(request.getPanelName());
 
-        Set<Teacher> teachers =
-                new HashSet<>(
-                        teacherRepository.findAllById(
-                                request.getTeacherIds()
-                        )
-                );
+        List<Teacher> teachers = teacherRepository.findAllById(
+                                request.getTeacherIds());
 
         if (teachers.size() != request.getTeacherIds().size()) {
             throw new RuntimeException(
@@ -89,12 +86,10 @@ public class ReviewPanelService {
 
         panel.setPanelName(request.getPanelName());
 
-        Set<Teacher> teachers =
-                new HashSet<>(
+        List<Teacher> teachers =
                         teacherRepository.findAllById(
                                 request.getTeacherIds()
-                        )
-                );
+                        );
 
         if (teachers.size() != request.getTeacherIds().size()) {
             throw new RuntimeException(
@@ -131,9 +126,9 @@ public class ReviewPanelService {
 
         response.setPanelName(panel.getPanelName());
 
-        List<Long> teacherIds = new List<>();
+        List<Long> teacherIds = new ArrayList<Long>();
 
-        List<String> teacherNames = new List<>();
+        List<String> teacherNames = new ArrayList<String>();
 
         for (Teacher teacher :
                 panel.getPanelMembers()) {

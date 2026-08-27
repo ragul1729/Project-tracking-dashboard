@@ -38,6 +38,12 @@ public class AuthService {
                 request.name()
         );
 
+        if (userRepository.existsByEmail(
+                request.email())) {
+
+            throw new RuntimeException(
+                    "Email already exists");
+        }
 
         userRepository.save(user);
     }
