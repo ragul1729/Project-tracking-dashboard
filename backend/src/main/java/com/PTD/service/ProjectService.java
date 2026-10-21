@@ -33,8 +33,9 @@ public class ProjectService {
     public ProjectResponse createProject(
             ProjectRequest request) {
 
+        String mentorRegNum = request.getMentorId().trim().split("\\s* \\s*")[0];
         Teacher mentor = teacherRepository
-                .findById(request.getMentorId())
+                .findByRegNum(mentorRegNum)
                 .orElseThrow(() ->
                         new RuntimeException("Mentor not found"));
 
@@ -49,11 +50,11 @@ public class ProjectService {
         project.setDegree(
                 request.getDegree());
 
-        project.setBranch(
-                request.getBranch());
+        project.setDepartment(
+                request.getDepartment());
 
-        project.setBatchNumber(
-                request.getBatchNumber());
+        project.setTeamNumber(
+                request.getTeamNumber());
 
         project.setStatus(
                 request.getStatus());
@@ -66,12 +67,13 @@ public class ProjectService {
 
         if (request.getStudentIds() != null) {
 
-            for (Long studentId :
+            for (String studentId :
                     request.getStudentIds()) {
 
+                String studentRegNum = studentId.trim().split("\\s*-\\s*")[0];
                 Student student =
                         studentRepository
-                                .findById(studentId)
+                                .findByRegNum(studentRegNum)
                                 .orElseThrow(() ->
                                         new RuntimeException(
                                                 "Student not found"));
@@ -123,33 +125,18 @@ public class ProjectService {
         response.setDegree(
                 project.getDegree());
 
-        response.setBranch(
-                project.getBranch());
+        response.setDepartment(
+                project.getDepartment());
 
-        response.setBatchNumber(
-                project.getBatchNumber());
+        response.setTeamNumber(
+                project.getTeamNumber());
 
         response.setStatus(
                 project.getStatus());
 
-        if (project.getMentor() != null) {
-
-            response.setMentorId(
-                    project.getMentor()
-                            .getTeacherId());
-
-            response.setMentorName(
-                    project.getMentor()
-                            .getUser()
-                            .getName());
-                          /*  + " "
-                            + project.getMentor()
-                            .getUser()
-                            .getName()); */
-        }
-
-        List<Long> studentIds =
-                new ArrayList<>();
+        response.setMentorId(project.getMentor().getRegNum() + " - " + project.getMentor().getName());
+        List<String> studentIds =
+                new ArrayList<String>();
 
         if (project.getStudents() != null) {
 
@@ -157,7 +144,7 @@ public class ProjectService {
                     project.getStudents()) {
 
                 studentIds.add(
-                        student.getStudentId());
+                        student.getRegNum() + " - " + student.getName());
             }
         }
 

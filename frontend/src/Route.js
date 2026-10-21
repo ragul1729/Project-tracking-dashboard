@@ -7,6 +7,8 @@ import Mentor from './Mentor/Mentor';
 import Mentor2 from './Mentor/Mentor2';
 import Addacc from './Admin/Addacc';
 import Createnew from './Admin/Createnew';
+import Updateacc from './Admin/Updateacc';
+import Updateproj from './Admin/Updateproj';
 
 function Path(){
     useEffect(() => {
@@ -22,7 +24,9 @@ function Path(){
                 <Route path="/mentor/dashboard" exact component = {Mentor2} />
                 <Route path="/admin" exact component = {Admin} />
                 <Route path="/addacc" exact component = {Addacc} />
+                <Route path="/updateacc" exact component = {Updateacc} />
                 <Route path="/createproj" exact component = {Createnew} />
+                <Route path="/updateproj" exact component = {Updateproj} />
                 </Switch>
             </div>
         </Router>

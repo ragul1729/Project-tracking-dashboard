@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "student")
-public class Student {
+public class Student extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long studentId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long studentId;
 
     @OneToOne
     @JoinColumn(
@@ -18,8 +18,8 @@ public class Student {
     )
     private User user;
 
-    @Column(unique = true, nullable = false)
-    private String registerNo;
+//    @Column(unique = true, nullable = false)
+//    private String registerNo;
 
     private Integer academicYear;
 
@@ -30,10 +30,6 @@ public class Student {
     public Student() {
     }
 
-    public Long getStudentId() {
-        return studentId;
-    }
-
     public User getUser() {
         return user;
     }
@@ -42,13 +38,13 @@ public class Student {
         this.user = user;
     }
 
-    public String getRegisterNo() {
-        return registerNo;
-    }
-
-    public void setRegisterNo(String registerNo) {
-        this.registerNo = registerNo;
-    }
+//    public String getRegisterNo() {
+//        return registerNo;
+//    }
+//
+//    public void setRegisterNo(String registerNo) {
+//        this.registerNo = registerNo;
+//    }
 
     public Integer getAcademicYear() {
         return academicYear;

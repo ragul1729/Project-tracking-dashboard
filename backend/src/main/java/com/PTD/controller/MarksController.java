@@ -57,15 +57,15 @@ public class MarksController {
                 marksService.getMarks(id));
     }
 
-    @GetMapping("/student/{studentId}")
-    public ResponseEntity<List<Marks>>
-    getMarksByStudent(
-            @PathVariable Long studentId) {
-
-        return ResponseEntity.ok(
-                marksService
-                        .getMarksByStudent(studentId));
-    }
+//    @GetMapping("/student/{studentId}")
+//    public ResponseEntity<List<Marks>>
+//    getMarksByStudent(
+//            @PathVariable Long studentId) {
+//
+//        return ResponseEntity.ok(
+//                marksService
+//                        .getMarksByStudent(studentId));
+//    }
 
     @GetMapping("/review/{reviewId}")
     public ResponseEntity<List<Marks>>

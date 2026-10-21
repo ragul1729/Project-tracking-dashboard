@@ -82,12 +82,12 @@ public class MarksService {
                                 "Marks not found"));
     }
 
-    public List<Marks> getMarksByStudent(
-            Long studentId) {
-
-        return marksRepository
-                .findByStudentStudentId(studentId);
-    }
+//    public List<Marks> getMarksByStudent(
+//            Long studentId) {
+//
+//        return marksRepository
+//                .findByStudentStudentId(studentId);
+//    }
 
     public List<Marks> getMarksByReview(
             Long reviewId) {

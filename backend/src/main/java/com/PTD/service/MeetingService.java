@@ -109,9 +109,9 @@ public class MeetingService {
                 meeting.getProject()
                         .getProjectTitle());
 
-        response.setTeacherId(
-                meeting.getTeacher()
-                        .getTeacherId());
+//        response.setTeacherId(
+//                meeting.getTeacher()
+//                        .getTeacherId());
 
         response.setTeacherName(
                 meeting.getTeacher()

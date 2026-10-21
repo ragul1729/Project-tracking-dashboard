@@ -1,32 +1,21 @@
 package com.PTD.dto;
 
-public class TeacherRequest {
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-    private Long userId;
-    private String employeeNo;
-    private String department;
+import java.time.LocalDate;
 
-    public Long getUserId() {
-        return userId;
+public class TeacherRequest extends UserRequest {
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate doj;
+
+    public LocalDate getDoj() {
+        return doj;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setDoj(LocalDate doj) {
+        this.doj = doj;
     }
 
-    public String getEmployeeNo() {
-        return employeeNo;
-    }
 
-    public void setEmployeeNo(String employeeNo) {
-        this.employeeNo = employeeNo;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 }

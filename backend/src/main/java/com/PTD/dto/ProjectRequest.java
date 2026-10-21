@@ -10,15 +10,15 @@ public class ProjectRequest {
 
     private String degree;
 
-    private String branch;
+    private String department;
 
-    private String batchNumber;
+    private String teamNumber;
 
     private String status;
 
-    private Long mentorId;
+    private String mentorId;
 
-    private List<Long> studentIds;
+    private List<String> studentIds;
 
     public String getProjectTitle() {
         return projectTitle;
@@ -47,21 +47,21 @@ public class ProjectRequest {
         this.degree = degree;
     }
 
-    public String getBranch() {
-        return branch;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setBranch(String branch) {
-        this.branch = branch;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public String getBatchNumber() {
-        return batchNumber;
+    public String getTeamNumber() {
+        return teamNumber;
     }
 
-    public void setBatchNumber(
-            String batchNumber) {
-        this.batchNumber = batchNumber;
+    public void setTeamNumber(
+            String teamNumber) {
+        this.teamNumber = teamNumber;
     }
 
     public String getStatus() {
@@ -72,20 +72,20 @@ public class ProjectRequest {
         this.status = status;
     }
 
-    public Long getMentorId() {
+    public String getMentorId() {
         return mentorId;
     }
 
-    public void setMentorId(Long mentorId) {
+    public void setMentorId(String mentorId) {
         this.mentorId = mentorId;
     }
 
-    public List<Long> getStudentIds() {
+    public List<String> getStudentIds() {
         return studentIds;
     }
 
     public void setStudentIds(
-            List<Long> studentIds) {
+            List<String> studentIds) {
         this.studentIds = studentIds;
     }
 }

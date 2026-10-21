@@ -31,10 +31,10 @@ public class TeacherController {
         return teacherService.getTeacher(id);
     }
 
-    @PostMapping
-    public TeacherResponse createTeacher(
-            @RequestBody TeacherRequest request) {
-
-        return teacherService.createTeacher(request);
-    }
+//    @PostMapping
+//    public TeacherResponse createTeacher(
+//            @RequestBody TeacherRequest request) {
+//
+//        return teacherService.createTeacher(request);
+//    }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Timeline, TimelineEvent } from "react-event-timeline";
+//import { Timeline, TimelineEvent } from "react-event-timeline";
 import Modal from 'react-modal';
 
 import ViewMarks from './ViewMarks';
@@ -38,7 +38,7 @@ function Dashboard() {
         <h1 className="project-dashboard-title">B.Tech Project Tracking Dashboard</h1>
         <div className="timeline">
 
-            <Timeline lineColor="#44EABB">
+            {/* <Timeline lineColor="#44EABB">
             {data.map((info) => {
                 return (
                 <TimelineEvent
@@ -78,7 +78,7 @@ function Dashboard() {
                 </TimelineEvent>
                 );
             })}
-            </Timeline>
+            </Timeline> */}
         </div>
 
         <Modal isOpen={modalIsOpen}

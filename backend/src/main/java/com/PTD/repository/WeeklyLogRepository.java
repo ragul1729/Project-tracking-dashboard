@@ -10,5 +10,5 @@ public interface WeeklyLogRepository
 
     List<WeeklyLog> findByProjectProjectId(Long projectId);
 
-    List<WeeklyLog> findByCreatedByTeacherId(Long teacherId);
+   // List<WeeklyLog> findByCreatedByTeacherId(Long teacherId);
 }

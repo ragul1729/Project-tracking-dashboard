@@ -1,14 +1,17 @@
 package com.PTD.service;
 
-import com.PTD.dto.TeacherRequest;
-import com.PTD.dto.TeacherResponse;
+import com.PTD.dto.*;
+import com.PTD.entity.Role;
+import com.PTD.entity.Student;
 import com.PTD.entity.Teacher;
 import com.PTD.entity.User;
 import com.PTD.repository.TeacherRepository;
 import com.PTD.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeacherService {
@@ -25,18 +28,26 @@ public class TeacherService {
     }
 
     public TeacherResponse createTeacher(
-            TeacherRequest request) {
+            User user, TeacherRequest request) {
 
-        User user = userRepository
-                .findById(request.getUserId())
-                .orElseThrow(() ->
-                        new RuntimeException("User not found"));
+//        User user = userRepository
+//                .findById(request.getUserId())
+//                .orElseThrow(() ->
+//                        new RuntimeException("User not found"));
 
         Teacher teacher = new Teacher();
 
-        teacher.setUser(user);
-        teacher.setEmployeeNo(
-                request.getEmployeeNo());
+        teacher.setEmail(request.getEmail());
+        teacher.setName(request.getName());
+        teacher.setPhoneNum(request.getPhone());
+        teacher.setDob(request.getDob());
+        teacher.setRegNum(request.getRegNum());
+        teacher.setRoles(request.getRoles());
+        teacher.setDepartment(request.getDepartment());
+//        teacher.setUser(user);
+//        teacher.setEmployeeNo(
+//                request.getEmployeeNo());
+        teacher.setDateOfJoining(request.getDoj());
         teacher.setDepartment(
                 request.getDepartment());
 
@@ -54,6 +65,18 @@ public class TeacherService {
                 .toList();
     }
 
+    public List<String> getAllMentors() {
+
+        List<String> mentors = new ArrayList<String>();
+        Optional<List<Teacher>> teachers = teacherRepository.findByRoles(Role.MENTOR);
+        if(teachers.isPresent()){
+            for(Teacher t: teachers.get()){
+                mentors.add(t.getRegNum() + " - " + t.getName());
+            }
+        }
+        return mentors;
+    }
+
     public TeacherResponse getTeacher(Long id) {
 
         Teacher teacher =
@@ -65,7 +88,30 @@ public class TeacherService {
         return convertToResponse(teacher);
     }
 
-    private TeacherResponse convertToResponse(
+    public TeacherResponse updateTeacher(TeacherRequest request){
+
+        Teacher teacher =
+                teacherRepository.findByEmail(request.getEmail())
+                        .orElseThrow(() ->
+                                new RuntimeException(
+                                        "Teacher not found"));
+
+        teacher.setEmail(request.getEmail());
+        teacher.setName(request.getName());
+        teacher.setPhoneNum(request.getPhone());
+        teacher.setDob(request.getDob());
+        teacher.setRegNum(request.getRegNum());
+        teacher.setRoles(request.getRoles());
+        teacher.setDepartment(request.getDepartment());
+        teacher.setDateOfJoining(request.getDoj());
+
+        Teacher saved =
+                teacherRepository.save(teacher);
+
+        return convertToResponse(saved);
+    }
+
+    TeacherResponse convertToResponse(
             Teacher teacher) {
 
         User user = teacher.getUser();
@@ -73,23 +119,12 @@ public class TeacherService {
         TeacherResponse response =
                 new TeacherResponse();
 
-        response.setTeacherId(
-                teacher.getTeacherId());
-
-        response.setUserId(
-                user.getUserId());
 
         response.setEmail(
                 user.getEmail());
 
         response.setName(
                 user.getName());
-
-        response.setEmployeeNo(
-                teacher.getEmployeeNo());
-
-        response.setDepartment(
-                teacher.getDepartment());
 
         response.setRoles(
                 user.getRoles());

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text ,HStack } from "@chakra-ui/react"
-import {Timeline, TimelineEvent} from 'react-event-timeline'
+//import {Timeline, TimelineEvent} from 'react-event-timeline'
 var data = [
     {
     "title" : "Review 0",
@@ -26,7 +26,7 @@ function Dashboard() {
   return (
     <div>
         <Box pos="fixed" h="520px" w="620px" top="70px" left="250px">
-        <Timeline
+        {/* <Timeline
         lineColor = "#44EABB"
         >
         {data.map((info) => {
@@ -49,7 +49,7 @@ function Dashboard() {
         </HStack>
         </TimelineEvent>
         )})}
-        </Timeline>
+        </Timeline> */}
         </Box>
     </div>
   );

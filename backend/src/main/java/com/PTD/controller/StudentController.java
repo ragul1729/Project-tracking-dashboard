@@ -20,8 +20,8 @@ public class StudentController {
     }
 
     @GetMapping
-    public List<StudentResponse> getAllStudents() {
-        return studentService.getAllStudents();
+    public List<String> getAllStudents() {
+        return studentService.getAllStudentsNames();
     }
 
     @GetMapping("/{id}")
@@ -31,10 +31,10 @@ public class StudentController {
         return studentService.getStudent(id);
     }
 
-    @PostMapping
-    public StudentResponse createStudent(
-            @RequestBody StudentRequest request) {
-
-        return studentService.createStudent(request);
-    }
+//    @PostMapping
+//    public StudentResponse createStudent(
+//            @RequestBody StudentRequest request) {
+//
+//        return studentService.createStudent(request);
+//    }
 }

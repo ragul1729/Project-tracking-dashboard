@@ -11,6 +11,6 @@ public interface MeetingRepository
     List<Meeting> findByProjectProjectId(
             Long projectId);
 
-    List<Meeting> findByTeacherTeacherId(
-            Long teacherId);
+//    List<Meeting> findByTeacherTeacherId(
+//            Long teacherId);
 }

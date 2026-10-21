@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Box, Text, HStack, VStack, Button, Stack, Input} from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
-import { Timeline, TimelineEvent } from "react-event-timeline";
+//import { Timeline, TimelineEvent } from "react-event-timeline";
 import Modal from "react-modal";
 import{
   Accordion,
@@ -208,7 +208,7 @@ function Dashboard() {
         Fire Detection using Deep Learning
       </Text>
       <Box pos="fixed" h="520px" w="620px" top="80px" left="275px">
-        <Timeline lineColor="#44EABB">
+        {/* <Timeline lineColor="#44EABB">
           {data.map((info) => {
             return (
               <TimelineEvent
@@ -263,7 +263,7 @@ function Dashboard() {
               </TimelineEvent>
             );
           })}
-        </Timeline>
+        </Timeline> */}
       </Box>
 
       {/*Modal-1 */} 

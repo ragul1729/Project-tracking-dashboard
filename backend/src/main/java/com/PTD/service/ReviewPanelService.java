@@ -133,9 +133,9 @@ public class ReviewPanelService {
         for (Teacher teacher :
                 panel.getPanelMembers()) {
 
-            teacherIds.add(
-                    teacher.getTeacherId()
-            );
+//            teacherIds.add(
+//                    teacher.getTeacherId()
+//            );
 
             teacherNames.add(
                     teacher.getUser().getName()

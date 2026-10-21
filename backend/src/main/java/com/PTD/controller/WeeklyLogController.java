@@ -61,15 +61,15 @@ public class WeeklyLogController {
                         .getLogsByProject(projectId));
     }
 
-    @GetMapping("/teacher/{teacherId}")
-    public ResponseEntity<List<WeeklyLogResponse>>
-    getLogsByTeacher(
-            @PathVariable Long teacherId) {
-
-        return ResponseEntity.ok(
-                weeklyLogService
-                        .getLogsByTeacher(teacherId));
-    }
+//    @GetMapping("/teacher/{teacherId}")
+//    public ResponseEntity<List<WeeklyLogResponse>>
+//    getLogsByTeacher(
+//            @PathVariable Long teacherId) {
+//
+//        return ResponseEntity.ok(
+//                weeklyLogService
+//                        .getLogsByTeacher(teacherId));
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<WeeklyLogResponse>

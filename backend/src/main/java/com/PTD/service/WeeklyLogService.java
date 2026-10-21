@@ -95,15 +95,15 @@ public class WeeklyLogService {
                 .toList();
     }
 
-    public List<WeeklyLogResponse>
-    getLogsByTeacher(Long teacherId) {
-
-        return weeklyLogRepository
-                .findByCreatedByTeacherId(teacherId)
-                .stream()
-                .map(this::convertToResponse)
-                .toList();
-    }
+//    public List<WeeklyLogResponse>
+//    getLogsByTeacher(Long teacherId) {
+//
+//        return weeklyLogRepository
+//                .findByCreatedByTeacherId(teacherId)
+//                .stream()
+//                .map(this::convertToResponse)
+//                .toList();
+//    }
 
     public WeeklyLogResponse updateLog(
             Long logId,
@@ -170,9 +170,9 @@ public class WeeklyLogService {
                 log.getProject()
                         .getProjectTitle());
 
-        response.setTeacherId(
-                log.getCreatedBy()
-                        .getTeacherId());
+//        response.setTeacherId(
+//                log.getCreatedBy()
+//                        .getTeacherId());
 
         response.setTeacherName(
                 log.getCreatedBy()

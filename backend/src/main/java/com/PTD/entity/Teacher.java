@@ -2,15 +2,16 @@ package com.PTD.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "teacher")
-public class Teacher {
+public class Teacher extends User{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long teacherId;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long teacherId;
 
     @OneToOne
     @JoinColumn(
@@ -19,12 +20,7 @@ public class Teacher {
             nullable = false
     )
     private User user;
-
-    @Column(unique = true, nullable = false)
-    private String employeeNo;
-
-    private String department;
-
+    private LocalDate dateOfJoining;
     @ManyToMany(mappedBy = "panelMembers")
     private List<ReviewPanel> reviewPanels;
 
@@ -34,9 +30,6 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Long getTeacherId() {
-        return teacherId;
-    }
 
     public User getUser() {
         return user;
@@ -46,20 +39,12 @@ public class Teacher {
         this.user = user;
     }
 
-    public String getEmployeeNo() {
-        return employeeNo;
+    public LocalDate getDateOfJoining() {
+        return dateOfJoining;
     }
 
-    public void setEmployeeNo(String employeeNo) {
-        this.employeeNo = employeeNo;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDateOfJoining(LocalDate dateOfJoining) {
+        this.dateOfJoining = dateOfJoining;
     }
 
     public List<ReviewPanel> getReviewPanels() {
