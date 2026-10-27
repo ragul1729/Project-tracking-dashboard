@@ -21,7 +21,7 @@ function Path(){
                 <Route path="/" exact component = {App} />
                 <Route path="/student" exact component = {shome} />
                 <Route path="/mentor" exact component = {Mentor} />
-                <Route path="/mentor/dashboard" exact component = {Mentor2} />
+                <Route path="/mentor/dashboard/:projectId" exact component = {Mentor2} />
                 <Route path="/admin" exact component = {Admin} />
                 <Route path="/addacc" exact component = {Addacc} />
                 <Route path="/updateacc" exact component = {Updateacc} />

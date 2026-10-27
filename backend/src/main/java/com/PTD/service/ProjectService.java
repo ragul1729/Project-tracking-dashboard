@@ -107,6 +107,18 @@ public class ProjectService {
         return convertToResponse(project);
     }
 
+    List<ProjectResponse> convertToResponse(
+            List<Project> projects){
+
+        System.out.println("Inside ProjectService");
+        List<ProjectResponse> projectResponses = new ArrayList<ProjectResponse>();
+
+        for(Project p: projects){
+            System.out.println("Inside for-loop");
+            projectResponses.add(convertToResponse(p));
+        }
+        return projectResponses;
+    }
     private ProjectResponse convertToResponse(
             Project project) {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box,stack, Text } from "@chakra-ui/react"
+import { Box,Stack, Text } from "@chakra-ui/react"
 var info = 
     {
     "projname" : "Fire detection using DL",
@@ -10,7 +10,7 @@ function Mentorblock() {
     <div>
         <Box pos="fixed" top="155px" left="20px" bg="#080E2C" h="120px" w="200px" 
          borderWidth ="2px" borderColor="#44EABB" paddingTop="10px" borderRadius="15">
-            <stack>
+            <Stack>
             <Text paddingBottom="10px" fontSize="16" fontWeight="bold" textAlign="center" color="#FFFFFF">
             PROJECT DETAILS
             </Text>
@@ -21,7 +21,7 @@ function Mentorblock() {
             <Text fontSize="14" fontWeight="normal" textAlign="center" color="#44EABB">
             {info.mentor}
             </Text> 
-            </stack>
+            </Stack>
         </Box>
     </div>
   );

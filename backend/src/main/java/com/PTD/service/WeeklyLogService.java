@@ -49,16 +49,17 @@ public class WeeklyLogService {
 
         log.setProject(project);
         log.setCreatedBy(teacher);
-        log.setWeekNo(request.getWeekNo());
+        //log.setWeekNo(request.getWeekNo());
+        log.setTitle(request.getTitle());
 
         if (request.getLogDate() != null) {
             log.setLogDate(
-                    LocalDate.parse(
-                            request.getLogDate()));
+                            request.getLogDate());
         }
 
         log.setDescription(
                 request.getDescription());
+        log.setIsEdited(Boolean.FALSE);
 
         WeeklyLog saved =
                 weeklyLogRepository.save(log);
@@ -66,9 +67,10 @@ public class WeeklyLogService {
         return convertToResponse(saved);
     }
 
-    public List<WeeklyLogResponse> getAllLogs() {
+    public List<WeeklyLogResponse> getAllLogsByProject(Long projectId) {
 
-        return weeklyLogRepository.findAll()
+        System.out.println("Inside WeeklyLogService: getAllLogsByProject");
+        return weeklyLogRepository.findByProjectProjectId(projectId)
                 .stream()
                 .map(this::convertToResponse)
                 .toList();
@@ -129,16 +131,17 @@ public class WeeklyLogService {
 
         log.setProject(project);
         log.setCreatedBy(teacher);
-        log.setWeekNo(request.getWeekNo());
+        //log.setWeekNo(request.getWeekNo());
 
         if (request.getLogDate() != null) {
             log.setLogDate(
-                    LocalDate.parse(
-                            request.getLogDate()));
+                            request.getLogDate());
         }
 
+        log.setTitle(request.getTitle());
         log.setDescription(
                 request.getDescription());
+        log.setIsEdited(Boolean.TRUE);
 
         return convertToResponse(
                 weeklyLogRepository.save(log));
@@ -179,9 +182,11 @@ public class WeeklyLogService {
                         .getUser()
                         .getName());
 
-        response.setWeekNo(log.getWeekNo());
+        //response.setWeekNo(log.getWeekNo());
         response.setLogDate(log.getLogDate());
+        response.setTitle(log.getTitle());
         response.setDescription(log.getDescription());
+        response.setIsEdited(log.getIsEdited());
 
         return response;
     }

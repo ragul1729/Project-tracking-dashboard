@@ -2,9 +2,9 @@ package com.PTD.service;
 
 import com.PTD.dto.*;
 import com.PTD.entity.Role;
-import com.PTD.entity.Student;
 import com.PTD.entity.Teacher;
 import com.PTD.entity.User;
+import com.PTD.service.ProjectService;
 import com.PTD.repository.TeacherRepository;
 import com.PTD.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,15 @@ public class TeacherService {
 
     private final TeacherRepository teacherRepository;
     private final UserRepository userRepository;
+    private final ProjectService projectService;
 
     public TeacherService(
             TeacherRepository teacherRepository,
-            UserRepository userRepository) {
+            UserRepository userRepository, ProjectService projectService) {
 
         this.teacherRepository = teacherRepository;
         this.userRepository = userRepository;
+        this.projectService = projectService;
     }
 
     public TeacherResponse createTeacher(
@@ -88,6 +90,17 @@ public class TeacherService {
         return convertToResponse(teacher);
     }
 
+    public TeacherResponse getMentor(Long id) {
+
+        Teacher teacher =
+                teacherRepository.findById(id)
+                        .orElseThrow(() ->
+                                new RuntimeException(
+                                        "Teacher not found"));
+
+        return convertToResponse(teacher);
+    }
+
     public TeacherResponse updateTeacher(TeacherRequest request){
 
         Teacher teacher =
@@ -114,21 +127,25 @@ public class TeacherService {
     TeacherResponse convertToResponse(
             Teacher teacher) {
 
-        User user = teacher.getUser();
 
         TeacherResponse response =
                 new TeacherResponse();
 
 
         response.setEmail(
-                user.getEmail());
+                teacher.getEmail());
 
         response.setName(
-                user.getName());
+                teacher.getName());
+
+        response.setRegNum(teacher.getRegNum());
 
         response.setRoles(
-                user.getRoles());
-
+                teacher.getRoles());
+        System.out.println("Inside TeacherService: " + teacher.getProjects().size());
+        List<ProjectResponse> prs = projectService.convertToResponse(teacher.getProjects());
+        response.setProjects(prs);
+        System.out.println(response.getProjects().size());
         return response;
     }
 }

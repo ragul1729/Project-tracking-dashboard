@@ -10,18 +10,41 @@ import MentorNews from "./News";
 import MentorMeeting from "./Meeting";
 
 import './Mentor.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Mentor () {
+
+    const mentorID = 42;
+
+    const [mentorData, setMentorData] = useState({});
+
+    useEffect(() => {
+        const fetchMentor = async () => {
+            try {
+                const response = await axios.get(
+                `http://localhost:8080/api/teachers/mentor/${mentorID}`
+                );
+
+                setMentorData(response.data);
+                //console.log(response.data);
+            } catch (error) {
+                console.error("Error fetching mentor:", error);
+            } 
+        };
+            fetchMentor();
+    }, []);
+
     return (
         <div>
             <Navbar />
             <div className="wrapper">
                 <div className="left">
-                    <MentorNameBlock />
+                    {mentorData.name && <MentorNameBlock mentorName={mentorData.name}/>}
                     <MentorProjectDetails />
                 </div>
                 <div className="middle">
-                    <MentorProjectList />
+                    {mentorData.projects && <MentorProjectList projects={mentorData.projects}/>}
                 </div>
                 <div className="right">
                 <MentorNews />

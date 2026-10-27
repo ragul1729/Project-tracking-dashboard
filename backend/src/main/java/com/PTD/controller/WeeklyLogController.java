@@ -34,12 +34,13 @@ public class WeeklyLogController {
                                 .createLog(request));
     }
 
-    @GetMapping
+    @GetMapping("/project/{projectId}")
     public ResponseEntity<List<WeeklyLogResponse>>
-    getAllLogs() {
+    getAllLogsByProject(@PathVariable Long projectId) {
 
+        System.out.println("Inside WeeklyLogController: getAllLogsByProject");
         return ResponseEntity.ok(
-                weeklyLogService.getAllLogs());
+                weeklyLogService.getAllLogsByProject(projectId));
     }
 
     @GetMapping("/{id}")
@@ -51,15 +52,15 @@ public class WeeklyLogController {
                 weeklyLogService.getLog(id));
     }
 
-    @GetMapping("/project/{projectId}")
-    public ResponseEntity<List<WeeklyLogResponse>>
-    getLogsByProject(
-            @PathVariable Long projectId) {
-
-        return ResponseEntity.ok(
-                weeklyLogService
-                        .getLogsByProject(projectId));
-    }
+//    @GetMapping("/project/{projectId}")
+//    public ResponseEntity<List<WeeklyLogResponse>>
+//    getLogsByProject(
+//            @PathVariable Long projectId) {
+//
+//        return ResponseEntity.ok(
+//                weeklyLogService
+//                        .getLogsByProject(projectId));
+//    }
 
 //    @GetMapping("/teacher/{teacherId}")
 //    public ResponseEntity<List<WeeklyLogResponse>>

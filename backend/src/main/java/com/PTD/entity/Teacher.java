@@ -27,6 +27,9 @@ public class Teacher extends User{
     @OneToMany(mappedBy = "teacher")
     private List<Meeting> meetings;
 
+    @OneToMany(mappedBy = "mentor", fetch = FetchType.EAGER)
+    private List<Project> projects;
+
     public Teacher() {
     }
 
@@ -62,5 +65,13 @@ public class Teacher extends User{
     public void setMeetings(
             List<Meeting> meetings) {
         this.meetings = meetings;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 }

@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import axios from "axios";
 
 import './CreateLog.css';
 import '../Components/components.css';
 
 
-function CreateLog () {
+function CreateLog ({projectId}) {
 
     const [title, setTitle] = useState('');
     const [log, setLog] = useState('');
@@ -22,7 +23,8 @@ function CreateLog () {
 
     const formSubmissionHandler = event => { 
 
-        if (title !== '') {
+        event.preventDefault();
+        if (title.trim() !== '') {
             setTitleError(false);
         }
 
@@ -31,7 +33,7 @@ function CreateLog () {
             event.preventDefault();
         }
 
-        if (log !== '') {
+        if (log.trim() !== '') {
             setLogError(false);
         }
 
@@ -39,6 +41,17 @@ function CreateLog () {
             setLogError(true);
             event.preventDefault();
         }
+
+        const logPayload = {"projectId": projectId, "teacherId":42, "logDate": new Date().toISOString(), "title": title, "description": log, "isEdited": false}
+        const response = axios.post("http://localhost:8080/api/weekly-logs", logPayload)
+        .then(response => {
+            // Handles success
+            console.log('Log created:', response.data);
+        })
+        .catch(error => {
+            // Handles error
+            console.error('Error creating Log:', error);
+        });;
     };
 
     return (

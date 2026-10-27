@@ -28,5 +28,19 @@
 .log .log-bottom {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: #666;
+}
+
+.log .log-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.log .log-edited {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #888;
+    white-space: nowrap;
 }

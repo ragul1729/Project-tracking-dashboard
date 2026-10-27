@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import Modal from 'react-modal';
 
 import ViewMarks from './ViewMarks';
+import { Chrono } from "react-chrono";
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+import Timeline from './Timeline'; 
 
 import './MentorDashboard.css';
 
@@ -37,48 +41,10 @@ function Dashboard() {
     <div>
         <h1 className="project-dashboard-title">B.Tech Project Tracking Dashboard</h1>
         <div className="timeline">
-
-            {/* <Timeline lineColor="#44EABB">
-            {data.map((info) => {
-                return (
-                <TimelineEvent
-                    title={info.title}
-                    icon={<i />}
-                    iconColor="black"
-                    buttons={<i />}
-                    container="card"
-                    style={{ border: "2px solid #080E2C"}}
-                    cardHeaderStyle={{
-                    backgroundColor: "#080E2C",
-                    fontSize: "16px",
-                    fontWeight: "bold",
-                    }}
-                    contentStyle={{
-                    backgroundColor: "#D8E8E4",
-                    fontWeight: "bold",
-                    }}
-                >
-                    <div className="timeline-content">
-                        <div>
-                            {info.summary}
-                        </div>
-                        <div className="timeline-footer">
-                                <div className="timeline-footer-left">
-                                    <img src="https://img.icons8.com/material-sharp/24/000000/planner.png" />
-                                    <p>{info.date}</p>
-                                    <p> - </p>
-                                    <p>{info.time}</p>
-                                </div>
-                                <div>
-                                    <button onClick={() => setModalIsOpen(true)}>View Marks</button>
-                                </div>
-                        </div>
-                    </div> 
-                        
-                </TimelineEvent>
-                );
-            })}
-            </Timeline> */}
+             <Timeline 
+                   data={data} 
+                   setModalIsOpen={setModalIsOpen}
+             />
         </div>
 
         <Modal isOpen={modalIsOpen}

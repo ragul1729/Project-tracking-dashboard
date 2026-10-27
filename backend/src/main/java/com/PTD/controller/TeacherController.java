@@ -24,11 +24,11 @@ public class TeacherController {
         return teacherService.getAllTeachers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/mentor/{id}")
     public TeacherResponse getTeacher(
             @PathVariable Long id) {
 
-        return teacherService.getTeacher(id);
+        return teacherService.getMentor(id);
     }
 
 //    @PostMapping

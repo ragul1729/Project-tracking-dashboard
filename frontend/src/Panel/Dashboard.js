@@ -3,6 +3,7 @@ import { Box, Text, HStack, VStack, Button, Stack, Input} from "@chakra-ui/react
 import { CloseIcon } from "@chakra-ui/icons";
 //import { Timeline, TimelineEvent } from "react-event-timeline";
 import Modal from "react-modal";
+import { Chrono } from "react-chrono";
 import{
   Accordion,
   AccordionItem,
@@ -172,23 +173,23 @@ function Dashboard() {
 
   const datainit = [
     {
-      title: "Review 1",
+      cardTitle: "Review 1",
       summary:'',
       date: "25/08/2021",
-      time: "5:00 PM",
+      title: "5:00 PM",
     },
     {
-      title: "Review 2",
+      cardTitle: "Review 2",
       summary:'',
       date: "26/08/2021",
-      time: "5:00 PM",
+      title: "5:00 PM",
     },
     {
-      title: "Review 3",
+      cardTitle: "Review 3",
       summary:'',
         
       date: "27/08/2021",
-      time: "5:00 PM",
+      title: "5:00 PM",
     },
   ];
 
@@ -264,6 +265,19 @@ function Dashboard() {
             );
           })}
         </Timeline> */}
+          <Chrono
+          items={datainit}
+          mode="VERTICAL_ALTERNATING" // Options: "VERTICAL", "HORIZONTAL", "VERTICAL_ALTERNATING"
+          slideShow={false}
+          hideControls={false}
+          theme={{
+            primary: '#3182ce',      // Chakra Blue 500
+            secondary: '#edf2f7',    // Chakra Gray 100
+            cardBgColor: '#ffffff',
+            titleColor: '#2d3748',   // Chakra Dark Gray
+            titleColorActive: '#ffffff'
+          }}
+        />
       </Box>
 
       {/*Modal-1 */} 

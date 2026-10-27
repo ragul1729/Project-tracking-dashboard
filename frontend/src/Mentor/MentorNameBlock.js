@@ -1,9 +1,9 @@
 import './MentorNameBlock.css';
 
-function MentorNameBlock () {
+function MentorNameBlock ({mentorName}) {
     return (
         <div className="mentor-nameblock block">
-            <h1>Jeyakumar G</h1>
+            <h1>{mentorName}</h1>
             <p>Mentor</p>
         </div>
     )

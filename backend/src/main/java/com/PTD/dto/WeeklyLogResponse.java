@@ -1,20 +1,25 @@
 package com.PTD.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class WeeklyLogResponse {
 
     private Long logId;
-
     private Long projectId;
     private String projectTitle;
-
     private Long teacherId;
     private String teacherName;
+    //private Integer weekNo;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+    private LocalDateTime logDate;
 
-    private Integer weekNo;
-    private LocalDate logDate;
+
+    private String title;
     private String description;
+    private Boolean isEdited;
 
     public Long getLogId() {
         return logId;
@@ -56,20 +61,28 @@ public class WeeklyLogResponse {
         this.teacherName = teacherName;
     }
 
-    public Integer getWeekNo() {
-        return weekNo;
-    }
+//    public Integer getWeekNo() {
+//        return weekNo;
+//    }
+//
+//    public void setWeekNo(Integer weekNo) {
+//        this.weekNo = weekNo;
+//    }
 
-    public void setWeekNo(Integer weekNo) {
-        this.weekNo = weekNo;
-    }
-
-    public LocalDate getLogDate() {
+    public LocalDateTime getLogDate() {
         return logDate;
     }
 
-    public void setLogDate(LocalDate logDate) {
+    public void setLogDate(LocalDateTime logDate) {
         this.logDate = logDate;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -78,5 +91,13 @@ public class WeeklyLogResponse {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getIsEdited() {
+        return isEdited;
+    }
+
+    public void setIsEdited(Boolean edited) {
+        isEdited = edited;
     }
 }
